@@ -43,6 +43,15 @@ namespace cminor
         /// </list>
         public int Apply(IRMain cfg)
         {
+            /// remarks: ACSL语法支持自定义谓词。输入的程序中就可能定义了一些谓词，这里先把他们注册给Solver，后续就不需要特殊的处理
+            foreach (Predicate predicate in cfg.predicates)
+            {
+                solver.definePredicate(predicate);
+            }
+
+            // YOUR CODE HERE
+            // 根据演绎验证的原理，生成基本路径和验证条件，交由后端Solver求解
+
             return 0;
         }
     }
